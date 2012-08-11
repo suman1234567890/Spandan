@@ -1,0 +1,29 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>HeathCare program</display-name>
+  <servlet>
+    <description></description>
+    <display-name>prediction</display-name>
+    <servlet-name>prediction</servlet-name>
+    <servlet-class>healthcare.prediction.prediction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>prediction</servlet-name>
+    <url-pattern>/prediction</url-pattern>
+    
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>predictionBMJ</display-name>
+    <servlet-name>predictionBMJ</servlet-name>
+    <servlet-class>healthcare.prediction.predictionBMJ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>predictionBMJ</servlet-name>
+    <url-pattern>/predictionBMJ</url-pattern>
+    
+  </servlet-mapping>
+</web-app>
