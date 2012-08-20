@@ -16,9 +16,31 @@ import healthcare.prediction.words;
 public class predictionBMJ extends HttpServlet
 {
    PrintWriter out;
-      int medicalwordlength=0;
+
+   int medicalwordlength = 0;
 
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+   {
+         String input=request.getParameter("Text");
+         String[] args=input.split(" ");
+         String[] medicalwords;
+         words[] w=new words[args.length];
+        for(int i=0;i<args.length;i++)
+        {
+              w[i]=new words();
+              w[i].setword(args[i]);
+              w[i].setstatus(false);
+        }
+    
+    
+        medicalwords=getMedicalWord();
+
+
+        predict(w,args,medicalwords);
+             prediction(wrequest, response);
+   }
+
+   public void prediction(words[] w1,HttpServletRequest request, HttpServletResponse response)
    {
       try
       {
@@ -37,8 +59,8 @@ public class predictionBMJ extends HttpServlet
             boolean bnname = false;
 
             boolean bsalary = false;
-          private StringBuilder acc=new StringBuilder();
 
+            private StringBuilder acc = new StringBuilder();
 
             public void startElement(String uri, String localName, String qName, Attributes attributes)
                throws SAXException
@@ -52,7 +74,8 @@ public class predictionBMJ extends HttpServlet
                }
 
             }
-@Override
+
+            @Override
             public void endElement(String uri, String localName, String qName) throws SAXException
             {
 
@@ -75,7 +98,7 @@ public class predictionBMJ extends HttpServlet
                   predict(w, args, medicalwords);
 
                   out.println("\n\n\n\n\n\nOUTPUT(if medical word found then true other wise false)");
-                    out.println("Tags are");
+                  out.println("Tags are");
                   for (int i = 0; i < args.length; i++)
                   {
                      if (w[i].getstatus())
@@ -83,18 +106,32 @@ public class predictionBMJ extends HttpServlet
                         out.print(w[i].getWord() + ", ");
                      }
                   }
+                  out.println("MatchWord");
+                    for(int i = 0;i<w1.length();i++)
+                      {
+                           for(int j=0;j<args.length;j++)
+                             {
+                                 if((w[j].getWord()).compareTo(w1[i].getWord)==0 && w[i].getStatus()==true)
+           {
+          out.print(w[i].getWord()+" , ");
+          }
+                                 
+                             }
+                      }
+                      
 
-                  out.println("\n\n Passage : " + s);
-                  bfname = false;
+                  out.println("\n\n Passage : " + s); 
+  
+  bfname = false;
                }
-                 acc.setLength(0);
+               acc.setLength(0);
 
             }
 
             public void characters(char ch[], int start, int length) throws SAXException
             {
 
-               acc.append(ch,start,length);
+               acc.append(ch, start, length);
 
             }
 
@@ -110,7 +147,6 @@ public class predictionBMJ extends HttpServlet
          e.printStackTrace();
          out.println(e);
       }
-
    }
 
    public void predict(words[] w, String[] word, String[] medicalwords)
@@ -161,7 +197,6 @@ public class predictionBMJ extends HttpServlet
          while ((strLine = br.readLine()) != null)
          {
 
-            //System.out.println (strLine);
             String[] temp = strLine.split(" ");
             for (int j = 0; j < temp.length; j++, i++)
             {
