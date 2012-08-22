@@ -15,6 +15,17 @@
     <url-pattern>/prediction</url-pattern>
     
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Find</display-name>
+    <servlet-name>Find</servlet-name>
+    <servlet-class>udhc.prediction.Find</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Find</servlet-name>
+    <url-pattern>/Find</url-pattern>
+    
+  </servlet-mapping>
    <servlet>
     <description></description>
     <display-name>predictionBMJ</display-name>

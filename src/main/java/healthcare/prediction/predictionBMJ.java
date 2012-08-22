@@ -14,7 +14,7 @@ import javax.servlet.http.*;
 import healthcare.prediction.words;
 
 public class predictionBMJ extends HttpServlet
-{
+{/*
    PrintWriter out;
 
    int medicalwordlength = 0;
@@ -37,10 +37,10 @@ public class predictionBMJ extends HttpServlet
 
 
         predict(w,args,medicalwords);
-             prediction(wrequest, response);
+             prediction(w,args.length,request, response);
    }
 
-   public void prediction(words[] w1,HttpServletRequest request, HttpServletResponse response)
+   public void prediction(words[] w1,int len,HttpServletRequest request, HttpServletResponse response)
    {
       try
       {
@@ -107,7 +107,7 @@ public class predictionBMJ extends HttpServlet
                      }
                   }
                   out.println("MatchWord");
-                    for(int i = 0;i<w1.length();i++)
+                   for(int i = 0;i<len;i++)
                       {
                            for(int j=0;j<args.length;j++)
                              {
@@ -217,5 +217,5 @@ public class predictionBMJ extends HttpServlet
       return medical;
 
    }
-
+*/
 }
