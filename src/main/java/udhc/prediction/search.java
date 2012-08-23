@@ -6,13 +6,15 @@ public class search {
   String[] medical=null;
   public int StartSearch(String record,String[] source )
   {
-    predict p = new predict(record,medical);
-    String[] PredictedWord=p.getResult();
+    //predict p = new predict(record,medical);
+    //String[] PredictedWord=p.getResult();
+    String[] PredictedWord=record.split("[,\\s\\.\\?]"); 
     for(int i=0;i<PredictedWord.length;i++)
+      
     {
       for(int j=0;j<source.length;j++)
       {
-        if(PredictedWord[i].compareTo(source[j])==0)
+        if(PredictedWord[i].compareToIgnoreCase(source[j])==0)
         {
           count++;
           break;

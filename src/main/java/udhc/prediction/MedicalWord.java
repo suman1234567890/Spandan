@@ -9,7 +9,7 @@ public class MedicalWord
      public String[] getMedicalWord()
      {
      String[] medical1 = new String[80000];
-     String[] medical = new String[80000];
+     
       //String[] medical = null;
   int i = 0;
       try
@@ -39,6 +39,7 @@ public class MedicalWord
     {
       System.out.println("Error1: " + e);
     }
+  String[] medical = new String[i];
     System.arraycopy(medical1,0,medical,0,i);
     return medical;
     }
