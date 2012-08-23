@@ -31,7 +31,7 @@ import javax.servlet.http.*;
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
-    response.setContentType("text/xsl");
+    response.setContentType("text/xml");
     PrintWriter out=null;
     try
     {
@@ -65,16 +65,28 @@ Element root = doc.createElement("Company");
     search s =  new search(medical);
     for(int i=0;i<parsed.length;i++)
     {
+      if((i==33|| i == 34 ) || i==35)
+      {
+        continue;
+      }
+      if((i==57|| i == 58 ) || i==59)
+      {
+        continue;
+      }
+      if((i==87|| i == 88) || i==89)
+      {
+        continue;
+      }
       s.reset();
         s.StartSearch(parsed[i], output);
-  Element child = doc.createElement("item");
+  Element child = doc.createElement("itempassage");
   root.appendChild(child);
-  Element child1 = doc.createElement("passage");
+  Element child1 = doc.createElement("passage1");
     child.appendChild(child1);
 
     Text text = doc.createTextNode(parsed[i]);
     child1.appendChild(text);
-  Element element = doc.createElement("Employee");
+  Element element = doc.createElement("iii");
   child.appendChild(element);
 
     Text text1 = doc.createTextNode(""+s.getCount());
